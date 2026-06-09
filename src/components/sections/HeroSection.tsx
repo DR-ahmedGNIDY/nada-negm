@@ -145,7 +145,7 @@ function MobileHero() {
     <section id="home" className="relative min-h-screen flex flex-col overflow-hidden bg-[#070B14]">
 
       {/* صورة ندى — النصف العلوي */}
-      <div className="relative w-full h-[32vh] flex-shrink-0" style={{ marginTop: '60px' }}>
+      <div className="relative w-full h-[33vh] flex-shrink-0" style={{ marginTop: '60px' }}>
         <Image
           src="/panar.webp"
           alt="Nada Negm"
@@ -157,17 +157,6 @@ function MobileHero() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#070B14] via-[#070B14]/20 to-transparent" />
 
-        {/* Badge فوق الصورة */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="absolute top-16 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 px-3 py-1.5 rounded-full backdrop-blur-md border border-[#C66CFF]/30 text-xs text-white/80 whitespace-nowrap"
-          style={{ background: 'rgba(198,108,255,0.12)' }}
-        >
-          <Sparkles size={11} className="text-[#C66CFF]" />
-          <span>خبيرة UGC والمحتوى الرقمي</span>
-        </motion.div>
       </div>
 
       {/* المحتوى — أسفل الصورة */}
