@@ -145,7 +145,7 @@ function MobileHero() {
     <section id="home" className="relative min-h-screen flex flex-col overflow-hidden bg-[#070B14]">
 
       {/* صورة ندى — النصف العلوي */}
-      <div className="relative w-full h-[42vh] flex-shrink-0">
+      <div className="relative w-full h-[35vh] flex-shrink-0">
         <Image
           src="/panar.webp"
           alt="Nada Negm"
