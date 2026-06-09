@@ -42,7 +42,7 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled ? 'glass border-b border-white/5 py-3' : 'py-5'
-        } max-md:bg-[#070B14] max-md:border-b max-md:border-white/5 max-md:py-3`}
+        } max-lg:bg-[#070B14] max-lg:border-b max-lg:border-white/5 max-lg:py-3`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">

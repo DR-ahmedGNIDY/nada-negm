@@ -256,14 +256,156 @@ function MobileHero() {
 }
 
 // =============================================
+// TABLET HERO — iPad / Tablet (768px – 1024px)
+// =============================================
+function TabletHero() {
+  return (
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#070B14]"
+    >
+      {/* Banner Image — full background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/panar.webp"
+          alt="Nada Negm — UGC Creator"
+          fill
+          priority
+          quality={90}
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        {/* تعتيم يمين للنص — شمال واضح لندى */}
+        <div className="absolute inset-0 bg-gradient-to-l from-[#070B14]/95 via-[#070B14]/55 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#070B14] to-transparent" />
+      </div>
+
+      {/* glow بنفسجي */}
+      <div className="absolute inset-0 z-[1] pointer-events-none">
+        <div className="absolute top-1/3 right-1/4 w-[380px] h-[380px] rounded-full bg-[#C66CFF]/10 blur-[120px]" />
+      </div>
+
+      {/* المحتوى — يمين الشاشة */}
+      <div className="relative z-10 w-full max-w-3xl mx-auto px-8 flex justify-end">
+        <div className="w-full max-w-[420px] text-center">
+
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-[#C66CFF]/30 text-sm text-white/80 mb-6 backdrop-blur-md"
+          >
+            <Sparkles size={13} className="text-[#C66CFF]" />
+            <span>خبيرة UGC والمحتوى الرقمي</span>
+          </motion.div>
+
+          {/* الاسم */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="font-black tracking-tight mb-4 leading-[1.1]"
+          >
+            <span className="gradient-text drop-shadow-lg text-6xl block">Nada Negm</span>
+            <span className="text-white/85 text-2xl font-bold drop-shadow-md block mt-2">
+              UGC Creator & Brand Content Specialist
+            </span>
+          </motion.h1>
+
+          {/* الوصف */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="text-white/65 text-base mb-8 leading-relaxed"
+          >
+            محتوى حقيقي يصنع ثقة حقيقية ويزيد مبيعات البراند.
+          </motion.p>
+
+          {/* الأزرار */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10"
+          >
+            <a
+              href="#portfolio"
+              className="flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-white bg-gradient-to-r from-[#C66CFF] to-[#FF5ACD] hover:opacity-90 transition-all shadow-lg shadow-purple-500/25 w-full sm:w-auto justify-center"
+            >
+              <Play size={16} className="fill-white" />
+              شاهد أعمالي
+            </a>
+            <a
+              href="#contact"
+              className="flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-white glass border border-white/20 hover:border-white/40 backdrop-blur-sm transition-all w-full sm:w-auto justify-center"
+            >
+              تواصل معي
+              <ArrowLeft size={16} className="rotate-180" />
+            </a>
+          </motion.div>
+
+          {/* Stats 2×2 */}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.45 }}
+            className="grid grid-cols-2 gap-3"
+          >
+            {[
+              { value: '١٥٠+', label: 'فيديو منتج' },
+              { value: '٥٠+', label: 'براند عالمي' },
+              { value: '١٠M+', label: 'مشاهدة' },
+              { value: '٣+', label: 'سنوات خبرة' },
+            ].map((stat, i) => (
+              <div
+                key={i}
+                className="rounded-2xl p-4 text-center backdrop-blur-md border border-white/10"
+                style={{ background: 'rgba(7,11,20,0.55)' }}
+              >
+                <div className="text-2xl font-black gradient-text mb-0.5">{stat.value}</div>
+                <div className="text-xs text-white/55">{stat.label}</div>
+              </div>
+            ))}
+          </motion.div>
+
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 z-10"
+      >
+        <span className="text-xs">تمرير للأسفل</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+          className="w-0.5 h-8 bg-gradient-to-b from-white/40 to-transparent rounded-full"
+        />
+      </motion.div>
+    </section>
+  )
+}
+
+// =============================================
 // EXPORT
 // =============================================
 export default function HeroSection() {
   return (
     <>
-      <div className="hidden md:block">
+      {/* Desktop: lg+ */}
+      <div className="hidden lg:block">
         <DesktopHero />
       </div>
+      {/* Tablet: md → lg */}
+      <div className="hidden md:block lg:hidden">
+        <TabletHero />
+      </div>
+      {/* Mobile: < md */}
       <div className="md:hidden">
         <MobileHero />
       </div>
