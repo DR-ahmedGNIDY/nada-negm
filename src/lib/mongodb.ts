@@ -1,10 +1,6 @@
 import mongoose from 'mongoose'
 
-const MONGODB_URI = process.env.MONGODB_URI!
-
-if (!MONGODB_URI) {
-  throw new Error('يرجى تحديد متغير البيئة MONGODB_URI')
-}
+const MONGODB_URI = process.env.MONGODB_URI
 
 interface MongooseCache {
   conn: typeof mongoose | null
@@ -22,6 +18,7 @@ if (!global.mongoose) {
 }
 
 async function connectDB(): Promise<typeof mongoose> {
+  if (!MONGODB_URI) throw new Error('يرجى تحديد متغير البيئة MONGODB_URI')
   if (cached.conn) return cached.conn
 
   if (!cached.promise) {
