@@ -144,8 +144,10 @@ function MobileHero() {
   return (
     <section id="home" className="flex flex-col bg-[#070B14]" style={{ paddingTop: '60px' }}>
 
-      {/* صورة ندى — كاملة بدون قص */}
-      <div className="w-full">
+      {/* ===== صورة البانر + Overlay + أزرار + سوشيال ===== */}
+      <div className="relative w-full">
+
+        {/* الصورة — كاملة بدون قص */}
         <Image
           src="/panar2.webp"
           alt="Nada Negm"
@@ -153,91 +155,87 @@ function MobileHero() {
           height={1350}
           priority
           quality={90}
-          className="w-full h-auto object-contain"
+          className="w-full h-auto block"
           sizes="100vw"
         />
+
+        {/* Overlay تدريجي على آخر 35% من الصورة */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to top, rgba(7,11,20,1) 0%, rgba(7,11,20,0.92) 15%, rgba(7,11,20,0.6) 28%, rgba(0,0,0,0) 50%)',
+          }}
+        />
+
+        {/* أزرار + سوشيال فوق الـ Overlay */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-col items-center px-5 pb-6 gap-3">
+
+          {/* الأزرار */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col w-full gap-2.5 max-w-[300px]"
+          >
+            <a
+              href="#portfolio"
+              className="flex items-center justify-center gap-2 w-full py-[13px] rounded-2xl font-bold text-white bg-gradient-to-r from-[#C66CFF] to-[#FF5ACD] shadow-lg shadow-purple-500/30 active:scale-[0.98] transition-transform"
+            >
+              <Play size={17} className="fill-white" />
+              شاهد أعمالي
+            </a>
+            <a
+              href="#contact"
+              className="flex items-center justify-center gap-2 w-full py-[13px] rounded-2xl font-bold text-white border border-white/20 backdrop-blur-sm active:bg-white/10 transition-colors"
+              style={{ background: 'rgba(255,255,255,0.08)' }}
+            >
+              تواصل معي
+              <ArrowLeft size={17} className="rotate-180" />
+            </a>
+          </motion.div>
+
+          {/* Social Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.45 }}
+            className="flex items-center gap-3"
+          >
+            <span className="text-white/40 text-xs">تابعيني</span>
+            <div className="flex gap-2.5">
+              <a href="https://instagram.com/nada.negm" target="_blank" rel="noopener noreferrer"
+                className="w-9 h-9 rounded-xl flex items-center justify-center border border-white/20 text-white/70 backdrop-blur-sm"
+                style={{ background: 'rgba(255,255,255,0.1)' }} aria-label="Instagram">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+              <a href="https://tiktok.com/@nada.negm" target="_blank" rel="noopener noreferrer"
+                className="w-9 h-9 rounded-xl flex items-center justify-center border border-white/20 text-white/70 backdrop-blur-sm"
+                style={{ background: 'rgba(255,255,255,0.1)' }} aria-label="TikTok">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.75a4.85 4.85 0 01-1.02-.06z"/>
+                </svg>
+              </a>
+              <a href="https://youtube.com/@nadanegm" target="_blank" rel="noopener noreferrer"
+                className="w-9 h-9 rounded-xl flex items-center justify-center border border-white/20 text-white/70 backdrop-blur-sm"
+                style={{ background: 'rgba(255,255,255,0.1)' }} aria-label="YouTube">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+            </div>
+          </motion.div>
+
+        </div>
       </div>
 
-      {/* المحتوى — أسفل الصورة مباشرة */}
-      <div className="flex flex-col items-center px-5 pb-10 pt-6">
-
-        {/* الأزرار */}
+      {/* ===== الإحصائيات — أسفل الصورة ===== */}
+      <div className="flex flex-col items-center px-5 pb-10 pt-5">
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.45 }}
-          className="flex flex-col w-full gap-3 mb-7 max-w-[300px]"
-        >
-          <a
-            href="#portfolio"
-            className="flex items-center justify-center gap-2 w-full py-[14px] rounded-2xl font-bold text-white bg-gradient-to-r from-[#C66CFF] to-[#FF5ACD] shadow-lg shadow-purple-500/20 active:scale-[0.98] transition-transform"
-          >
-            <Play size={17} className="fill-white" />
-            شاهد أعمالي
-          </a>
-          <a
-            href="#contact"
-            className="flex items-center justify-center gap-2 w-full py-[14px] rounded-2xl font-bold text-white border border-white/12 active:bg-white/5 transition-colors"
-            style={{ background: 'rgba(255,255,255,0.04)' }}
-          >
-            تواصل معي
-            <ArrowLeft size={17} className="rotate-180" />
-          </a>
-        </motion.div>
-
-        {/* Social Links */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.55 }}
-          className="flex items-center gap-3 mb-7"
-        >
-          <span className="text-white/30 text-xs">تابعيني</span>
-          <div className="flex gap-2.5">
-            <a
-              href="https://instagram.com/nada.negm"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-xl flex items-center justify-center border border-white/10 text-white/50 active:text-white transition-colors"
-              style={{ background: 'rgba(255,255,255,0.04)' }}
-              aria-label="Instagram"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-              </svg>
-            </a>
-            <a
-              href="https://tiktok.com/@nada.negm"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-xl flex items-center justify-center border border-white/10 text-white/50 active:text-white transition-colors"
-              style={{ background: 'rgba(255,255,255,0.04)' }}
-              aria-label="TikTok"
-            >
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.75a4.85 4.85 0 01-1.02-.06z"/>
-              </svg>
-            </a>
-            <a
-              href="https://youtube.com/@nadanegm"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-xl flex items-center justify-center border border-white/10 text-white/50 active:text-white transition-colors"
-              style={{ background: 'rgba(255,255,255,0.04)' }}
-              aria-label="YouTube"
-            >
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-              </svg>
-            </a>
-          </div>
-        </motion.div>
-
-        {/* Stats 2×2 */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.65 }}
+          transition={{ duration: 0.7, delay: 0.55 }}
           className="grid grid-cols-2 gap-2.5 w-full max-w-[300px]"
         >
           {[
@@ -246,20 +244,13 @@ function MobileHero() {
             { value: '١٠M+', label: 'مشاهدة' },
             { value: '٣+', label: 'سنوات خبرة' },
           ].map((stat, i) => (
-            <div
-              key={i}
-              className="rounded-2xl p-4 text-center border border-white/8"
-              style={{ background: 'rgba(255,255,255,0.04)' }}
-            >
+            <div key={i} className="rounded-2xl p-4 text-center border border-white/8" style={{ background: 'rgba(255,255,255,0.04)' }}>
               <div className="text-2xl font-black gradient-text mb-0.5">{stat.value}</div>
               <div className="text-xs text-white/45">{stat.label}</div>
             </div>
           ))}
         </motion.div>
       </div>
-
-      {/* Glow خلفي */}
-      <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full bg-[#C66CFF]/8 blur-[80px] pointer-events-none" />
     </section>
   )
 }
