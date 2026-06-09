@@ -147,7 +147,7 @@ function MobileHero() {
       {/* صورة ندى — النصف العلوي */}
       <div className="relative w-full h-[33vh] flex-shrink-0" style={{ marginTop: '60px' }}>
         <Image
-          src="/panar.webp"
+          src="/panar2.webp"
           alt="Nada Negm"
           fill
           priority
