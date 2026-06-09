@@ -160,31 +160,7 @@ function MobileHero() {
       </div>
 
       {/* المحتوى — أسفل الصورة */}
-      <div className="relative z-10 flex-1 flex flex-col items-center px-5 pb-10 -mt-6">
-
-        {/* الاسم */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-center mb-3"
-        >
-          <h1 className="text-5xl font-black tracking-tight">
-            <span className="gradient-text">Nada</span>
-            <span className="text-white"> Negm</span>
-          </h1>
-          <p className="text-white/45 text-sm mt-1.5 font-medium">UGC Creator & Brand Content Specialist</p>
-        </motion.div>
-
-        {/* الوصف */}
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.35 }}
-          className="text-white/60 text-center text-[15px] leading-relaxed mb-6 max-w-[280px]"
-        >
-          محتوى حقيقي يصنع ثقة حقيقية ويزيد مبيعات البراند.
-        </motion.p>
+      <div className="relative z-10 flex-1 flex flex-col items-center px-5 pb-10 pt-5">
 
         {/* الأزرار */}
         <motion.div
