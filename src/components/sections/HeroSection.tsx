@@ -142,25 +142,24 @@ function DesktopHero() {
 // =============================================
 function MobileHero() {
   return (
-    <section id="home" className="relative min-h-screen flex flex-col overflow-hidden bg-[#070B14]">
+    <section id="home" className="flex flex-col bg-[#070B14]" style={{ paddingTop: '60px' }}>
 
-      {/* صورة ندى — النصف العلوي */}
-      <div className="relative w-full h-[33vh] flex-shrink-0" style={{ marginTop: '60px' }}>
+      {/* صورة ندى — كاملة بدون قص */}
+      <div className="w-full">
         <Image
           src="/panar2.webp"
           alt="Nada Negm"
-          fill
+          width={1080}
+          height={1350}
           priority
-          quality={85}
-          className="object-cover object-top"
+          quality={90}
+          className="w-full h-auto object-contain"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#070B14] via-[#070B14]/20 to-transparent" />
-
       </div>
 
-      {/* المحتوى — أسفل الصورة */}
-      <div className="relative z-10 flex-1 flex flex-col items-center px-5 pb-10 pt-5">
+      {/* المحتوى — أسفل الصورة مباشرة */}
+      <div className="flex flex-col items-center px-5 pb-10 pt-6">
 
         {/* الأزرار */}
         <motion.div
