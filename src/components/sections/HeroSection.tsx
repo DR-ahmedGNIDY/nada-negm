@@ -4,13 +4,15 @@ import { motion } from 'framer-motion'
 import { ArrowLeft, Play, Sparkles } from 'lucide-react'
 import Image from 'next/image'
 
-export default function HeroSection() {
+// =============================================
+// DESKTOP HERO — لا تعدل هذا الجزء إطلاقاً
+// =============================================
+function DesktopHero() {
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* ===== BANNER IMAGE ===== */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/panar.webp"
@@ -21,19 +23,15 @@ export default function HeroSection() {
           className="object-cover object-center"
           sizes="100vw"
         />
-        {/* تعتيم على اليمين فقط خلف النص — الشمال (ندى) واضح */}
         <div className="absolute inset-0 bg-gradient-to-l from-[#070B14]/90 via-[#070B14]/60 to-transparent" />
-        {/* Gradient أسفل الصفحة فقط للانتقال */}
         <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#070B14] to-transparent" />
       </div>
 
-      {/* Purple glow behind content */}
       <div className="absolute inset-0 z-[1] pointer-events-none">
         <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-[#070B14] to-transparent" />
         <div className="absolute top-1/3 right-1/3 w-[500px] h-[500px] rounded-full bg-[#C66CFF]/8 blur-[140px]" />
       </div>
 
-      {/* Grid pattern subtle */}
       <div
         className="absolute inset-0 z-[1] opacity-[0.025]"
         style={{
@@ -43,9 +41,7 @@ export default function HeroSection() {
         }}
       />
 
-      {/* ===== CONTENT ===== */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center" style={{ transform: 'translateX(120px)' }}>
-        {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -56,7 +52,6 @@ export default function HeroSection() {
           <span>خبيرة UGC والمحتوى الرقمي المتخصص</span>
         </motion.div>
 
-        {/* Heading */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -70,7 +65,6 @@ export default function HeroSection() {
           </span>
         </motion.h1>
 
-        {/* Description */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -80,7 +74,6 @@ export default function HeroSection() {
           محتوى حقيقي يصنع ثقة حقيقية ويزيد مبيعات البراند.
         </motion.p>
 
-        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -103,7 +96,6 @@ export default function HeroSection() {
           </a>
         </motion.div>
 
-        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -128,7 +120,6 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -143,5 +134,184 @@ export default function HeroSection() {
         />
       </motion.div>
     </section>
+  )
+}
+
+// =============================================
+// MOBILE HERO — تصميم مختلف تماماً
+// =============================================
+function MobileHero() {
+  return (
+    <section id="home" className="relative min-h-screen flex flex-col overflow-hidden bg-[#070B14]">
+
+      {/* صورة ندى — النصف العلوي */}
+      <div className="relative w-full h-[55vh] flex-shrink-0">
+        <Image
+          src="/panar.webp"
+          alt="Nada Negm"
+          fill
+          priority
+          quality={85}
+          className="object-cover object-top"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#070B14] via-[#070B14]/20 to-transparent" />
+
+        {/* Badge فوق الصورة */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="absolute top-16 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 px-3 py-1.5 rounded-full backdrop-blur-md border border-[#C66CFF]/30 text-xs text-white/80 whitespace-nowrap"
+          style={{ background: 'rgba(198,108,255,0.12)' }}
+        >
+          <Sparkles size={11} className="text-[#C66CFF]" />
+          <span>خبيرة UGC والمحتوى الرقمي</span>
+        </motion.div>
+      </div>
+
+      {/* المحتوى — أسفل الصورة */}
+      <div className="relative z-10 flex-1 flex flex-col items-center px-5 pb-10 -mt-6">
+
+        {/* الاسم */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-center mb-3"
+        >
+          <h1 className="text-5xl font-black tracking-tight">
+            <span className="gradient-text">Nada</span>
+            <span className="text-white"> Negm</span>
+          </h1>
+          <p className="text-white/45 text-sm mt-1.5 font-medium">UGC Creator & Brand Content Specialist</p>
+        </motion.div>
+
+        {/* الوصف */}
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="text-white/60 text-center text-[15px] leading-relaxed mb-6 max-w-[280px]"
+        >
+          محتوى حقيقي يصنع ثقة حقيقية ويزيد مبيعات البراند.
+        </motion.p>
+
+        {/* الأزرار */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.45 }}
+          className="flex flex-col w-full gap-3 mb-7 max-w-[300px]"
+        >
+          <a
+            href="#portfolio"
+            className="flex items-center justify-center gap-2 w-full py-[14px] rounded-2xl font-bold text-white bg-gradient-to-r from-[#C66CFF] to-[#FF5ACD] shadow-lg shadow-purple-500/20 active:scale-[0.98] transition-transform"
+          >
+            <Play size={17} className="fill-white" />
+            شاهد أعمالي
+          </a>
+          <a
+            href="#contact"
+            className="flex items-center justify-center gap-2 w-full py-[14px] rounded-2xl font-bold text-white border border-white/12 active:bg-white/5 transition-colors"
+            style={{ background: 'rgba(255,255,255,0.04)' }}
+          >
+            تواصل معي
+            <ArrowLeft size={17} className="rotate-180" />
+          </a>
+        </motion.div>
+
+        {/* Social Links */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.55 }}
+          className="flex items-center gap-3 mb-7"
+        >
+          <span className="text-white/30 text-xs">تابعيني</span>
+          <div className="flex gap-2.5">
+            <a
+              href="https://instagram.com/nada.negm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-xl flex items-center justify-center border border-white/10 text-white/50 active:text-white transition-colors"
+              style={{ background: 'rgba(255,255,255,0.04)' }}
+              aria-label="Instagram"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a
+              href="https://tiktok.com/@nada.negm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-xl flex items-center justify-center border border-white/10 text-white/50 active:text-white transition-colors"
+              style={{ background: 'rgba(255,255,255,0.04)' }}
+              aria-label="TikTok"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.75a4.85 4.85 0 01-1.02-.06z"/>
+              </svg>
+            </a>
+            <a
+              href="https://youtube.com/@nadanegm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-xl flex items-center justify-center border border-white/10 text-white/50 active:text-white transition-colors"
+              style={{ background: 'rgba(255,255,255,0.04)' }}
+              aria-label="YouTube"
+            >
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Stats 2×2 */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.65 }}
+          className="grid grid-cols-2 gap-2.5 w-full max-w-[300px]"
+        >
+          {[
+            { value: '١٥٠+', label: 'فيديو منتج' },
+            { value: '٥٠+', label: 'براند عالمي' },
+            { value: '١٠M+', label: 'مشاهدة' },
+            { value: '٣+', label: 'سنوات خبرة' },
+          ].map((stat, i) => (
+            <div
+              key={i}
+              className="rounded-2xl p-4 text-center border border-white/8"
+              style={{ background: 'rgba(255,255,255,0.04)' }}
+            >
+              <div className="text-2xl font-black gradient-text mb-0.5">{stat.value}</div>
+              <div className="text-xs text-white/45">{stat.label}</div>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Glow خلفي */}
+      <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full bg-[#C66CFF]/8 blur-[80px] pointer-events-none" />
+    </section>
+  )
+}
+
+// =============================================
+// EXPORT
+// =============================================
+export default function HeroSection() {
+  return (
+    <>
+      <div className="hidden md:block">
+        <DesktopHero />
+      </div>
+      <div className="md:hidden">
+        <MobileHero />
+      </div>
+    </>
   )
 }

@@ -23,7 +23,7 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="relative order-2 lg:order-1"
+            className="relative order-2 lg:order-1 hidden md:block"
           >
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden glass-card">
               {/* Placeholder for profile image */}
@@ -69,8 +69,22 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="order-1 lg:order-2 space-y-6"
+            className="order-1 lg:order-2 space-y-6 col-span-1 lg:col-span-1"
           >
+            {/* Mobile mini avatar */}
+            <div className="flex items-center gap-4 md:hidden mb-2">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#C66CFF] to-[#FF5ACD] flex items-center justify-center text-white text-2xl font-black flex-shrink-0">
+                ن
+              </div>
+              <div>
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                  <span className="text-white text-sm font-semibold">متاحة للمشاريع</span>
+                </div>
+                <div className="text-white/40 text-xs mt-0.5">١٠M+ مشاهدة • ٥٠+ براند</div>
+              </div>
+            </div>
+
             <span className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold bg-[#C66CFF]/10 text-[#C66CFF] border border-[#C66CFF]/20">
               عني
             </span>
