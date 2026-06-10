@@ -275,7 +275,7 @@ function TabletHero() {
           fill
           priority
           quality={90}
-          className="object-cover object-center"
+          className="object-contain object-center"
           sizes="100vw"
         />
         {/* overlay واحد فقط — يغمق اليمين حيث المحتوى، يترك اليسار مرئياً */}
