@@ -257,15 +257,17 @@ function MobileHero() {
 
 // =============================================
 // TABLET HERO — iPad / Tablet (768px – 1024px)
+// two-column: image left | content right
 // =============================================
 function TabletHero() {
   return (
-    <section id="home" className="flex flex-col bg-[#070B14]" style={{ paddingTop: '60px' }}>
-
-      {/* الصورة + overlay + محتوى فوقها */}
-      <div className="relative w-full">
-
-        {/* panar.webp — كاملة بـ object-contain */}
+    <section
+      id="home"
+      className="flex flex-row bg-[#070B14] overflow-hidden"
+      style={{ paddingTop: '60px', minHeight: 'calc(100vh - 60px)' }}
+    >
+      {/* ===== عمود يسار — الصورة ===== */}
+      <div className="relative flex-shrink-0 w-[52%]">
         <Image
           src="/panar.webp"
           alt="Nada Negm — UGC Creator"
@@ -273,100 +275,103 @@ function TabletHero() {
           height={1080}
           priority
           quality={90}
-          className="w-full h-auto block"
-          sizes="100vw"
+          className="w-full h-full object-cover object-center"
+          sizes="52vw"
         />
-
-        {/* Overlay تدريجي على آخر 40% */}
+        {/* تعتيم على يمين الصورة للانتقال للمحتوى */}
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(to top, rgba(7,11,20,1) 0%, rgba(7,11,20,0.88) 18%, rgba(7,11,20,0.4) 35%, rgba(0,0,0,0) 55%)',
+            background: 'linear-gradient(to right, transparent 50%, rgba(7,11,20,0.7) 80%, rgba(7,11,20,1) 100%)',
           }}
         />
+        {/* تعتيم سفلي خفيف */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#070B14] to-transparent" />
+      </div>
+
+      {/* ===== عمود يمين — المحتوى ===== */}
+      <div className="flex-1 flex flex-col justify-center px-8 py-10 relative">
 
         {/* glow بنفسجي */}
-        <div className="absolute top-1/3 right-1/3 w-80 h-80 rounded-full bg-[#C66CFF]/10 blur-[100px] pointer-events-none" />
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-[#C66CFF]/12 blur-[90px] pointer-events-none" />
 
-        {/* المحتوى فوق الـ overlay */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-col items-center px-8 pb-8 gap-4">
+        <div className="relative z-10 space-y-5 max-w-[340px]">
 
           {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-[#C66CFF]/30 text-sm text-white/80 backdrop-blur-md"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#C66CFF]/30 text-xs text-white/75 backdrop-blur-md"
+            style={{ background: 'rgba(198,108,255,0.1)' }}
           >
-            <Sparkles size={13} className="text-[#C66CFF]" />
-            <span>خبيرة UGC والمحتوى الرقمي المتخصص</span>
+            <Sparkles size={12} className="text-[#C66CFF]" />
+            <span>خبيرة UGC والمحتوى الرقمي</span>
           </motion.div>
 
           {/* الاسم */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-center"
           >
-            <h1 className="text-6xl font-black tracking-tight leading-tight">
+            <h1 className="text-5xl font-black tracking-tight leading-[1.1] mb-2">
               <span className="gradient-text drop-shadow-lg">Nada Negm</span>
             </h1>
-            <p className="text-white/75 text-xl font-semibold mt-1">UGC Creator & Brand Content Specialist</p>
+            <p className="text-white/60 text-base font-semibold">UGC Creator & Brand Content Specialist</p>
           </motion.div>
 
           {/* الوصف */}
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-white/60 text-base text-center max-w-md"
+            className="text-white/50 text-sm leading-relaxed"
           >
             محتوى حقيقي يصنع ثقة حقيقية ويزيد مبيعات البراند.
           </motion.p>
 
           {/* الأزرار */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="flex flex-row items-center justify-center gap-3 w-full max-w-sm">
+            className="flex flex-col gap-2.5 pt-1"
+          >
             <a href="#portfolio"
-              className="flex items-center justify-center gap-2 flex-1 py-3.5 rounded-full font-bold text-white bg-gradient-to-r from-[#C66CFF] to-[#FF5ACD] shadow-lg shadow-purple-500/25 hover:opacity-90 transition-opacity">
+              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl font-bold text-white bg-gradient-to-r from-[#C66CFF] to-[#FF5ACD] shadow-lg shadow-purple-500/20 hover:opacity-90 transition-opacity">
               <Play size={16} className="fill-white" />
               شاهد أعمالي
             </a>
             <a href="#contact"
-              className="flex items-center justify-center gap-2 flex-1 py-3.5 rounded-full font-bold text-white border border-white/20 backdrop-blur-sm hover:border-white/40 transition-all"
-              style={{ background: 'rgba(255,255,255,0.08)' }}>
+              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl font-bold text-white border border-white/15 hover:border-white/30 transition-all"
+              style={{ background: 'rgba(255,255,255,0.05)' }}>
               تواصل معي
               <ArrowLeft size={16} className="rotate-180" />
             </a>
           </motion.div>
 
-        </div>
-      </div>
+          {/* Stats 2×2 */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.45 }}
+            className="grid grid-cols-2 gap-2.5 pt-2"
+          >
+            {[
+              { value: '١٥٠+', label: 'فيديو منتج' },
+              { value: '٥٠+', label: 'براند عالمي' },
+              { value: '١٠M+', label: 'مشاهدة' },
+              { value: '٣+', label: 'سنوات خبرة' },
+            ].map((stat, i) => (
+              <div key={i} className="rounded-xl p-3 text-center border border-white/8" style={{ background: 'rgba(255,255,255,0.04)' }}>
+                <div className="text-xl font-black gradient-text mb-0.5">{stat.value}</div>
+                <div className="text-[11px] text-white/45">{stat.label}</div>
+              </div>
+            ))}
+          </motion.div>
 
-      {/* الإحصائيات — أسفل الصورة */}
-      <div className="flex justify-center px-8 py-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.45 }}
-          className="grid grid-cols-4 gap-4 w-full max-w-2xl"
-        >
-          {[
-            { value: '١٥٠+', label: 'فيديو منتج' },
-            { value: '٥٠+', label: 'براند عالمي' },
-            { value: '١٠M+', label: 'مشاهدة' },
-            { value: '٣+', label: 'سنوات خبرة' },
-          ].map((stat, i) => (
-            <div key={i} className="rounded-2xl p-4 text-center border border-white/8" style={{ background: 'rgba(255,255,255,0.04)' }}>
-              <div className="text-2xl font-black gradient-text mb-0.5">{stat.value}</div>
-              <div className="text-xs text-white/50">{stat.label}</div>
-            </div>
-          ))}
-        </motion.div>
+        </div>
       </div>
 
     </section>
