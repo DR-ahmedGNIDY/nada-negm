@@ -5,13 +5,8 @@ import TestimonialModel from '@/models/Testimonial'
 import { z } from 'zod'
 
 const schema = z.object({
-  clientName: z.string().min(2),
-  clientTitle: z.string().min(2),
-  clientCompany: z.string().min(1),
-  clientAvatarId: z.string().optional(),
-  clientAvatarUrl: z.string().optional(),
-  content: z.string().min(20),
-  rating: z.number().min(1).max(5),
+  imageId: z.string().min(1),
+  imageUrl: z.string().url(),
   featured: z.boolean().optional(),
   order: z.number().optional(),
 })
@@ -32,7 +27,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
     const parsed = schema.safeParse(body)
-    if (!parsed.success) return NextResponse.json({ error: 'بيانات غير صحيحة' }, { status: 400 })
+    if (!parsed.success) return NextResponse.json({ error: 'بيانات غير صحيحة', details: parsed.error.issues }, { status: 400 })
     await connectDB()
     const item = await TestimonialModel.create(parsed.data)
     return NextResponse.json({ success: true, data: item }, { status: 201 })

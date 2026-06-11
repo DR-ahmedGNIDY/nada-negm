@@ -28,13 +28,8 @@ export interface Brand {
 
 export interface Testimonial {
   _id: string
-  clientName: string
-  clientTitle: string
-  clientCompany: string
-  clientAvatarId?: string
-  clientAvatarUrl?: string
-  content: string
-  rating: number
+  imageId: string
+  imageUrl: string
   featured: boolean
   order: number
   createdAt: string

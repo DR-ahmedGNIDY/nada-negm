@@ -2,13 +2,8 @@ import mongoose, { Schema } from 'mongoose'
 
 export interface ITestimonial {
   _id: string
-  clientName: string
-  clientTitle: string
-  clientCompany: string
-  clientAvatarId?: string
-  clientAvatarUrl?: string
-  content: string
-  rating: number
+  imageId: string
+  imageUrl: string
   featured: boolean
   order: number
   createdAt: Date
@@ -16,14 +11,9 @@ export interface ITestimonial {
 
 const TestimonialSchema = new Schema<ITestimonial>(
   {
-    clientName: { type: String, required: true, trim: true },
-    clientTitle: { type: String, required: true, trim: true },
-    clientCompany: { type: String, required: true, trim: true },
-    clientAvatarId: { type: String },
-    clientAvatarUrl: { type: String },
-    content: { type: String, required: true, trim: true },
-    rating: { type: Number, required: true, min: 1, max: 5 },
-    featured: { type: Boolean, default: false },
+    imageId: { type: String, required: true },
+    imageUrl: { type: String, required: true },
+    featured: { type: Boolean, default: true },
     order: { type: Number, default: 0 },
   },
   { timestamps: true }
