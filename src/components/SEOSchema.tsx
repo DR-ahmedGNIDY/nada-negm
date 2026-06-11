@@ -9,9 +9,9 @@ export default function SEOSchema() {
     image: 'https://nadanegm.com/og-image.jpg',
     jobTitle: 'UGC Creator & Brand Content Specialist',
     sameAs: [
-      'https://instagram.com/nadanegm',
-      'https://tiktok.com/@nadanegm',
-      'https://youtube.com/@nadanegm',
+      'https://www.instagram.com/nada_negm1',
+      'https://www.tiktok.com/@nada_ugc10',
+      'https://www.facebook.com/nada.611390',
     ],
     knowsAbout: ['UGC Content', 'Video Marketing', 'Social Media Content', 'Brand Strategy'],
     offers: {
