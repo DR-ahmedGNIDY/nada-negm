@@ -265,7 +265,7 @@ function TabletHero() {
     <section
       id="home"
       className="relative flex items-center justify-center overflow-hidden bg-[#070B14]"
-      style={{ minHeight: '100svh' }}
+      style={{ height: 'min(60vw, 680px)', minHeight: '480px' }}
     >
       {/* ===== الصورة — background كامل كـ Desktop ===== */}
       <div className="absolute inset-0 z-0">
