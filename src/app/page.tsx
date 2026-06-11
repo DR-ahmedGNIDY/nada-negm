@@ -9,6 +9,7 @@ import ProcessSection from '@/components/sections/ProcessSection'
 import AboutSection from '@/components/sections/AboutSection'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import ContactSection from '@/components/sections/ContactSection'
+import WhatsAppFloat from '@/components/layout/WhatsAppFloat'
 import connectDB from '@/lib/mongodb'
 import VideoModel from '@/models/Video'
 import BrandModel from '@/models/Brand'
@@ -49,6 +50,7 @@ export default async function HomePage() {
       <TestimonialsSection testimonials={testimonials} />
       <ContactSection />
       <Footer />
+      <WhatsAppFloat />
     </main>
   )
 }
