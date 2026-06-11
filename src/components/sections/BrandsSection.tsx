@@ -33,7 +33,7 @@ function MarqueeTrack({ brands, reverse = false }: { brands: Brand[]; reverse?: 
               <img
                 src={brand.logoUrl}
                 alt={brand.name}
-                className="h-8 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity filter brightness-0 invert"
+                className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
               />
             ) : (
               <span className="text-white/50 font-semibold text-sm whitespace-nowrap">{brand.name}</span>
