@@ -56,6 +56,7 @@ export default function VideosManager() {
 
   const uploadFile = async (file: File, type: 'video' | 'thumb'): Promise<UploadResult | null> => {
     setUploading(type)
+    toast.loading(type === 'video' ? 'جاري رفع الفيديو...' : 'جاري رفع الصورة...', { id: 'upload' })
     try {
       const isVideo = type === 'video'
       const folder = isVideo ? 'nada-negm/videos' : 'nada-negm/thumbnails'
@@ -67,7 +68,9 @@ export default function VideosManager() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ folder, resource_type }),
       })
+      if (!sigRes.ok) throw new Error('فشل الحصول على بيانات الرفع')
       const sig = await sigRes.json()
+      if (!sig.signature) throw new Error('بيانات التوقيع غير صحيحة')
 
       // Upload directly to Cloudinary (bypasses Vercel 4.5MB limit)
       const fd = new FormData()
@@ -84,9 +87,11 @@ export default function VideosManager() {
       const result = await uploadRes.json()
       if (result.error) throw new Error(result.error.message)
 
+      toast.success('تم الرفع بنجاح ✓', { id: 'upload' })
       return { publicId: result.public_id, url: result.secure_url }
-    } catch {
-      toast.error('فشل رفع الملف')
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'فشل رفع الملف'
+      toast.error(msg, { id: 'upload' })
       return null
     } finally {
       setUploading(null)
