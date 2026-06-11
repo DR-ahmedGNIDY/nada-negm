@@ -27,7 +27,8 @@ function MarqueeTrack({ brands, reverse = false }: { brands: Brand[]; reverse?: 
         {doubled.map((brand, i) => (
           <div
             key={`${brand._id}-${i}`}
-            className="flex-shrink-0 flex items-center justify-center px-8 py-4 glass-card rounded-xl border border-white/5 min-w-[140px] h-16"
+            className="flex-shrink-0 flex items-center justify-center px-8 py-4 rounded-xl border border-white/10 min-w-[140px] h-16"
+            style={{ background: 'rgba(255,255,255,0.08)' }}
           >
             {brand.logoUrl ? (
               <img

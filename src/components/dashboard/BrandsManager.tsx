@@ -126,7 +126,7 @@ export default function BrandsManager() {
           <div key={brand._id} className="glass-card rounded-xl p-4 group text-center">
             <div className="h-16 flex items-center justify-center mb-3">
               {brand.logoUrl ? (
-                <img src={brand.logoUrl} alt={brand.name} className="max-h-full max-w-full object-contain filter brightness-0 invert opacity-70 group-hover:opacity-100 transition-opacity" />
+                <img src={brand.logoUrl} alt={brand.name} className="max-h-full max-w-full object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
               ) : (
                 <span className="text-white/50 font-bold">{brand.name.charAt(0)}</span>
               )}
