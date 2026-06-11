@@ -56,15 +56,35 @@ export default function VideosManager() {
 
   const uploadFile = async (file: File, type: 'video' | 'thumb'): Promise<UploadResult | null> => {
     setUploading(type)
-    const fd = new FormData()
-    fd.append('file', file)
-    fd.append('type', type === 'video' ? 'video' : 'image')
-    fd.append('folder', type === 'video' ? 'videos' : 'thumbnails')
     try {
-      const res = await fetch('/api/upload', { method: 'POST', body: fd })
-      const data = await res.json()
-      if (!data.success) throw new Error()
-      return { publicId: data.data.publicId, url: data.data.url }
+      const isVideo = type === 'video'
+      const folder = isVideo ? 'nada-negm/videos' : 'nada-negm/thumbnails'
+      const resource_type = isVideo ? 'video' : 'image'
+
+      // Get signed params from server
+      const sigRes = await fetch('/api/upload-signature', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ folder, resource_type }),
+      })
+      const sig = await sigRes.json()
+
+      // Upload directly to Cloudinary (bypasses Vercel 4.5MB limit)
+      const fd = new FormData()
+      fd.append('file', file)
+      fd.append('api_key', sig.apiKey)
+      fd.append('timestamp', String(sig.timestamp))
+      fd.append('signature', sig.signature)
+      fd.append('folder', sig.folder)
+
+      const uploadRes = await fetch(
+        `https://api.cloudinary.com/v1_1/${sig.cloudName}/${resource_type}/upload`,
+        { method: 'POST', body: fd }
+      )
+      const result = await uploadRes.json()
+      if (result.error) throw new Error(result.error.message)
+
+      return { publicId: result.public_id, url: result.secure_url }
     } catch {
       toast.error('فشل رفع الملف')
       return null
