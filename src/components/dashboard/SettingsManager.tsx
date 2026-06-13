@@ -15,7 +15,7 @@ const defaultSettings: Settings = {
   heroTitle: 'ندى نجم', heroSubtitle: 'خبيرة محتوى UGC ومحتوى البراندات',
   heroDescription: 'أحول منتجك إلى قصة تبيع', aboutText: '',
   email: 'hello@nadanegm.com', phone: '', instagram: '', tiktok: '', youtube: '', twitter: '',
-  stats: { videos: 150, brands: 50, views: '10M+', experience: '3+' },
+  stats: { videos: 300, brands: 250, views: '10M+', experience: '3+' },
   seo: { title: 'ندى نجم | خبيرة محتوى UGC', description: '', keywords: '' },
 }
 

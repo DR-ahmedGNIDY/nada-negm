@@ -234,10 +234,10 @@ export default function ContactSection() {
                     style={{ background: '#111827' }}
                   >
                     <option value="">اختر الميزانية</option>
-                    <option value="أقل من ٥٠٠$">أقل من ٥٠٠$</option>
-                    <option value="٥٠٠$ - ١٠٠٠$">٥٠٠$ - ١٠٠٠$</option>
-                    <option value="١٠٠٠$ - ٣٠٠٠$">١٠٠٠$ - ٣٠٠٠$</option>
-                    <option value="أكثر من ٣٠٠٠$">أكثر من ٣٠٠٠$</option>
+                    <option value="أقل من 1000 جنيه$">أقل من 1000 جنيه$</option>
+                    <option value="1500$ - 2000$">1500$ - 2000$</option>
+                    <option value="2000$ - 3000$">2000$ - 3000$</option>
+                    <option value="أكثر من 3000 جنيه$">أكثر من 3000 جنيه$</option>
                   </select>
                 </div>
               </div>

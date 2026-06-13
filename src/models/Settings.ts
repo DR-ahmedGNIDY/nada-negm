@@ -49,10 +49,10 @@ const SettingsSchema = new Schema<ISettings>(
     youtube: { type: String },
     twitter: { type: String },
     stats: {
-      videos: { type: Number, default: 150 },
-      brands: { type: Number, default: 50 },
+      videos: { type: Number, default: 300 },
+      brands: { type: Number, default: 250 },
       views: { type: String, default: '10M+' },
-      experience: { type: String, default: '3+' },
+      experience: { type: String, default: '5+' },
     },
     seo: {
       title: { type: String, default: 'ندى نجم | خبيرة محتوى UGC والبراندات' },
